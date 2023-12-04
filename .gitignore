@@ -1,5 +1,7 @@
 #ignore all kind of files
-*.*
+*
+!*/
+
 #except 
 !*.v
 !*.xdc
@@ -8,3 +10,4 @@
 !*.JPG
 !*.drawio
 !*.gitignore
+
