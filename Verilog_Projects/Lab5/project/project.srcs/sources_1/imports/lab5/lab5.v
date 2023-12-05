@@ -82,8 +82,8 @@ module Lab5(
 	wire been_ready;
 
 	wire single_key_down = (key_down == (512'b1 << last_change)) ? 1'b1 : 1'b0;
-	wire enter_down = (single_key_down && key_down[ENTER_CODE] == 1'b1) ? 1'b1 : 1'b0;
-	wire space_down = (single_key_down && key_down[SPACE_CODE] == 1'b1) ? 1'b1 : 1'b0;
+	wire enter_down = (single_key_down && key_down[ENTER_CODE] == 1'b1) ? 1'b1 : 1'b0; // ! Updated
+	wire space_down = (single_key_down && key_down[SPACE_CODE] == 1'b1) ? 1'b1 : 1'b0; // ! Updated
 
 	SevenSegment seven_seg (
 		.display(display),
@@ -112,7 +112,7 @@ module Lab5(
 			last_key_down <= 0;
 		end
 		else begin
-			last_key_down <= key_down;
+			last_key_down <= (been_ready) ? key_down : last_key_down;
 		end
 	end
 
